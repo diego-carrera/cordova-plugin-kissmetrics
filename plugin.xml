@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-kissmetrics" version="1.0.0">
+    <name>Kissmetrics</name>
+
+    <description>
+      An Android Cordova plugin that allows use kissmetrics analytics.
+    </description>
+    <license>Apache 2.0</license>
+
+    <keywords>cordova,android,toast,message,alert</keywords>
+    <repo>https://github.com/diego-carrera/cordova-plugin-kissmetrics.git</repo>
+    <issue>https://github.com/diego-carrera/cordova-plugin-kissmetrics/issues</issue>
+
+    <engines>
+      <engine name="cordova-android" version=">=3.5.0" />
+      <engine name="cordova-ios" version=">=3.5.0" />
+    </engines>
+
+    <!-- android -->
+    <platform name="android">
+      <js-module src="www/kissmetrics-native.js" name="Kissmetrics">
+        <clobbers target="Kissmetrics" />
+      </js-module>
+
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="KissmetricsPlugin">
+          <param name="android-package" value="org.apache.cordova.kissmetrics.KissmetricsPlugin" />
+          <param name="onload" value="true" />
+        </feature>
+      </config-file>
+
+      <framework src="com.kissmetrics.sdk:KISSmetricsSDK:2.2.2"/>
+
+      <source-file src="src/android/KissmetricsPlugin.java" target-dir="src/org/apache/cordova/kissmetrics" />
+    </platform>
+
+    <platform name="ios">
+      <js-module src="www/kissmetrics-native.js" name="Kissmetrics">
+        <clobbers target="Kissmetrics" />
+      </js-module>
+
+      <config-file target="config.xml" parent="/*">
+        <feature name="KissmetricsPlugin">
+          <param name="ios-package" value="KissmetricsPlugin"/>
+          <param name="onload" value="true" />
+        </feature>
+        <plugin name="KissmetricsPlugin" value="KissmetricsPlugin"/>
+      </config-file>
+
+      <header-file src="src/ios/KissmetricsPlugin.h" />
+      <source-file src="src/ios/KissmetricsPlugin.m" />
+
+      <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
+        <dict>
+          <key>NSExceptionDomains</key>
+          <dict>
+            <key>kissmetrics.com</key>
+            <dict>
+              <key>NSIncludesSubdomains</key>
+              <true/>
+              <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+              <false/>
+            </dict>
+          </dict>
+        </dict>
+      </config-file>
+
+      <!-- Kissmetrics SDK -->
+      <podspec>
+        <config>
+          <source url="https://cdn.cocoapods.org/"/>
+        </config>
+        <pods use-frameworks="true">
+          <pod name="KISSmetrics-iOS-SDK" spec="2.3.1"/>
+        </pods>
+      </podspec>
+
+
+    </platform>
+
+</plugin>

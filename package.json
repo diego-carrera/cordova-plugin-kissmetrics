@@ -1,0 +1,27 @@
+{
+  "name": "cordova-plugin-kissmetrics",
+  "version": "0.0.1",
+  "description": "An Android Cordova plugin that allows users to display simple Toast messages at the bottom of the screen.",
+  "cordova": {
+    "id": "cordova-plugin-kissmetrics",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diego-carrera/cordova-plugin-kissmetrics.git"
+  },
+  "keywords": [
+    "Kissmetrics",
+    "Analytics",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Diego Carrera <diego.carrera@gmail.com>",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/diego-carrera/cordova-plugin-kissmetrics/issues"
+  },
+  "homepage": "https://github.com/diego-carrera/cordova-plugin-kissmetrics/"
+}
